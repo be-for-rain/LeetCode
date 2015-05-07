@@ -1,0 +1,35 @@
+vec.size()返回的是unsigned类型的
+不能写for (int i..; i < vec.size()-1; ..)
+否则对于vec.size() == 0的时候。。该循环终止条件有误
+而应写成for (int i..; i+1 < vec.size(); ..)
+
+
+每个函数所干的事要在一个逻辑层面里！ 每个函数应短到仅有几行
+
+高精度加法/乘法，可以开一个vector<int>, 对于计算结果，每位存的数值可比10大，最后再处理进位，处理为标准形式即可
+
+在LeetCode中遇到了Compile Error: required from here, 在本地编译则会遇到一长串编译错误
+后来发现是在以const vector<int> &vec 为函数参数时，也应用常量迭代器
+(const_iterator, const_reverse_iterator, [C++11] cbegin(), cend(), crbegin(), crend() )
+for (vector<int>::const_iterator it = vec.cbegin(); it != vec.cend(); ++it)
+或者for (auto it = vec.cbegin(); it != vec.cend(); ++it)
+
+用memset要include <cstring>
+
+文件输入输出
+#include <iostream>
+#include <fstream>
+ifstream fin("test.in");
+ofstream fout("test.out");
+fout << ... << endl;
+
+反转容器（如vector)中的一段元素
+reverse(ivec.begin(), ivec.end());
+
+<cctype>
+isalnum(ch) ~ isalpha(ch) && isdigit(ch)
+tolower(ch), toupper(ch)
+
+以append方式追加文字在文件末
+cat >> file.txt
+Ctrl+D
